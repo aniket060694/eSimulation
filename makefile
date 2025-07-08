@@ -57,4 +57,14 @@ test_run: $(TEST_RUN_TARGET)
 	@mkdir -p $(RESULT_DIR)
 	$(TEST_RUN_TARGET)
 
-.PHONY: all clean rebuild run test_run
+# Enable vehicle telemetry logs
+telemetry_enable: MACRO_ENABLE_FLAG = -DENABLE_TELEMETRY_LOG
+telemetry_enable: clean all
+telemetry_enable:
+	@mkdir -p $(RESULT_DIR)
+
+# Enable vehicle debug logs
+debug_enable: MACRO_ENABLE_FLAG = -DENABLE_DEBUG_LOG
+debug_enable: clean all
+
+.PHONY: all clean rebuild run test_run telemetry_enable debug_enable

@@ -1,0 +1,49 @@
+==================================================
+Company: Bravo Company
+Number of vehicles:3
+Average flight time: per flight 1.55577 hr
+Average distance traveled per Flight: 155.577 miles
+Average time charging per charge session: 0.200222 hr
+Number num of faults: 0
+Total num of passenger miles: 2333.65
+==================================================
+
+==================================================
+Company: Charlie Company
+Number of vehicles:2
+Average flight time: per flight 1.25021 hr
+Average distance traveled per Flight: 200.033 miles
+Average time charging per charge session: 0.800054 hr
+Number num of faults: 0
+Total num of passenger miles: 1200.2
+==================================================
+
+==================================================
+Company: Delta Company
+Number of vehicles:4
+Average flight time: per flight 1.75541 hr
+Average distance traveled per Flight: 157.987 miles
+Average time charging per charge session: 1.30686 hr
+Number num of faults: 2
+Total num of passenger miles: 1263.9
+==================================================
+
+==================================================
+Company: Alpha Company
+Number of vehicles:5
+Average flight time: per flight 1.8081 hr
+Average distance traveled per Flight: 216.973 miles
+Average time charging per charge session: 0.787418 hr
+Number num of faults: 2
+Total num of passenger miles: 4339.45
+==================================================
+
+==================================================
+Company: Echo Company
+Number of vehicles:6
+Average flight time: per flight 1.72452 hr
+Average distance traveled per Flight: 51.7355 miles
+Average time charging per charge session: 0.300194 hr
+Number num of faults: 6
+Total num of passenger miles: 620.826
+==================================================

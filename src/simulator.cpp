@@ -1,10 +1,15 @@
 #include "simulator.h"
+#include "test_module.h"
 
 int main(void)
 {
+#ifndef TEST_MODE_ENABLED
     Simulator obj;
 
     obj.simulation_start();
+#else
+    run_all_test_cases();
+#endif
 }
 
 // simulation class constructor
@@ -44,12 +49,25 @@ void Simulator::init_vehicles(int total_num_vehicles)
 // start the simulation process
 void Simulator::simulation_start(void)
 {
+#ifdef ENABLE_TELEMETRY_LOG
+    // intialize log vehicle telemetry
+    init_vehicle_telemetry();
+#endif
+
     //execute vehicle simulation every seconds
     while (current_time < simulation_duration_hrs) {
         execute_vehicle_simulation(time_interval);
         current_time += time_interval;
+#ifdef ENABLE_TELEMETRY_LOG
+        // Save vehicle specification data into .csv file
+        log_vehicle_telemetry();
+#endif
     }
 
+#ifdef ENABLE_TELEMETRY_LOG
+    // deintialize log vehicle telemetry
+    deinit_vehicle_telemetry();
+#endif
     show_company_performance();
 }
 
@@ -195,3 +213,49 @@ void Simulator::show_company_performance(void)
         std::cout << std::endl;
     }
 }
+
+#ifdef ENABLE_TELEMETRY_LOG
+void Simulator::init_vehicle_telemetry(void)
+{
+    // Default is overwrite
+    std::ios_base::openmode mode = std::ios_base::out;
+    // Add append flag if needed
+    mode |= std::ios_base::app;
+
+    telemetry_output_file.open(TELEMETRY_FILE_NAME, mode);
+
+    if (!telemetry_output_file.is_open()) {
+        std::cout << "Error: Failed to open telemetry file: " << TELEMETRY_FILE_NAME << std::endl;
+        return;
+    }
+
+    telemetry_output_file << "Current time,";
+    for (std::unique_ptr<Vehicle> &vehicle : vehicles) {
+        telemetry_output_file << vehicle->get_company_name() << ",";
+    }
+    telemetry_output_file << std::endl;
+}
+
+// @TODO this can be improve later
+void Simulator::log_vehicle_telemetry(void)
+{
+    if (!telemetry_output_file.is_open()) {
+        std::cout << "Error: Could not open the file " << TELEMETRY_FILE_NAME << std::endl;
+        return;
+    }
+
+    telemetry_output_file << current_time << ",";
+
+    for (std::unique_ptr<Vehicle> &vehicle : vehicles) {
+        telemetry_output_file << (int)vehicle->get_vehicle_cur_state() << ",";
+
+        // TODO: Implement telemetry logging for all remaining vehicle fields.
+    }
+    telemetry_output_file << std::endl;
+}
+
+void Simulator::deinit_vehicle_telemetry(void)
+{
+    telemetry_output_file.close();
+}
+#endif //ENABLE_TELEMETRY_LOG

@@ -1,6 +1,9 @@
 CXX = g++
+
+MACRO_ENABLE_FLAG =
+
 # Add cflags to detect compilation buid warnings
-CXXFLAGS = -std=c++17 -Wall -Wunused-variable -Wunused-function -g -I$(INC_DIR)
+CXXFLAGS = -std=c++17 -Wall -Wunused-variable -Wunused-function -g -I$(INC_DIR) $(MACRO_ENABLE_FLAG)
 
 # Test module enable flag
 CXXFLAGS_TEST_BUILD = -DTEST_MODE_ENABLED

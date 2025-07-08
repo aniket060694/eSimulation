@@ -29,34 +29,28 @@ sudo apt-get update
 sudo apt-get install g++ make
 
 Build Commands
-Navigate to the project's root directory and execute the following make commands:
+Navigate to the project root directory and execute the following make commands:
 
 Clean previous builds:
-
 make clean
 
 Build the simulator executable:
-
 make
 
 Running the Simulation
 After a successful build, you can run the simulator:
-
 make run
 
 You can also use this make command to run basic simulation test cases:
-
 make test_run
 
 By default, telemetry logs and debug logs are disabled. To enable these features,
 use the following make commands (note that this will trigger a recompile):
 
 To enable telemetry logs:
-
 make telemetry_enable
 
 To enable debug logs:
-
 make debug_enable
 
 Test Results:

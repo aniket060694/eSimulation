@@ -16,10 +16,10 @@ public:
         MAX_VEHICLE
     };
 
-    static std::shared_ptr<Vehicle> create_vehicle(VehicleType type) {
+    static std::unique_ptr<Vehicle> create_vehicle(VehicleType type) {
         switch (type) {
             case VehicleType::ALPHA:
-                return std::make_shared<Vehicle>(
+                return std::make_unique<Vehicle>(
                     "Alpha Company", //vehicle name
                     120,   //cruise_speed
                     320,   //battery_capacity
@@ -30,7 +30,7 @@ public:
                     VehicleState::FLYING // vehicle state
                 );
             case VehicleType::BRAVO:
-                return std::make_shared<Vehicle>(
+                return std::make_unique<Vehicle>(
                     "Bravo Company", //vehicle name
                     100,   //cruise_speed
                     100,   //battery_capacity
@@ -41,7 +41,7 @@ public:
                     VehicleState::FLYING // vehicle state
                 );
             case VehicleType::CHARLIE:
-                return std::make_shared<Vehicle>(
+                return std::make_unique<Vehicle>(
                     "Charlie Company", //vehicle name
                     160,   //cruise_speed
                     220,   //battery_capacity
@@ -52,7 +52,7 @@ public:
                     VehicleState::FLYING // vehicle state
                 );
             case VehicleType::DELTA:
-                return std::make_shared<Vehicle>(
+                return std::make_unique<Vehicle>(
                     "Delta Company", //vehicle name
                     90,    //cruise_speed
                     120,   //battery_capacity
@@ -63,7 +63,7 @@ public:
                     VehicleState::FLYING // vehicle state
                 );
             case VehicleType::ECHO:
-                return std::make_shared<Vehicle>(
+                return std::make_unique<Vehicle>(
                     "Echo Company", //vehicle name
                     30,    //cruise_speed
                     150,   //battery_capacity

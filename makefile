@@ -1,7 +1,7 @@
 include makefile.inc
 
 # Included all source files
-SRC_FILES = $(SRC_DIR)/charging_station.cpp $(SRC_DIR)/simulation_main.cpp
+SRC_FILES = $(SRC_DIR)/simulator.cpp
 
 # Copy all source object files
 OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

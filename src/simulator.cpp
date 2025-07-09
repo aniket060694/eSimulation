@@ -55,7 +55,7 @@ void Simulator::simulation_start(void)
 #endif
 
     //execute vehicle simulation every seconds
-    while (current_time < simulation_duration_hrs) {
+    while (current_time <= simulation_duration_hrs) {
         execute_vehicle_simulation(time_interval);
         current_time += time_interval;
 #ifdef ENABLE_TELEMETRY_LOG
@@ -207,7 +207,7 @@ void Simulator::show_company_performance(void)
         }
 
         //Round the faults value
-        std::cout << "Number num of faults: " << std::round(total_faults) << std::endl;
+        std::cout << "Number of faults: " << std::round(total_faults) << std::endl;
         std::cout << "Total num of passenger miles: " << total_num_passenger_miles << std::endl;
         std::cout << "==================================================" << std::endl;
         std::cout << std::endl;
